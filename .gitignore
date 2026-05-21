@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.env
+data/raw/*.csv
+data/raw/*.parquet
+data/raw/*.xlsx
+data/processed/
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
