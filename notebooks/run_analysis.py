@@ -188,3 +188,7 @@ def main():
     skill = results.loc[best_model, "Skill vs Naive"]
     print(f"  Best model  : {best_model}")
     print(f"  Best MAE    : {best_mae:.2f} EUR/MWh")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,4 @@
+Model,MAE [EUR/MWh],RMSE [EUR/MWh],MAPE [%],Skill vs Naive
+Naive (lag-24h),11.61,15.16,18.4,
+Linear Regression,7.47,10.07,12.0,0.357
+Gradient Boosted,8.03,10.61,13.4,0.308

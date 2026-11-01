@@ -1,5 +1,7 @@
 # Energy Price Forecasting
 
+[![tests](https://github.com/ViswanathDas/Energy_Price_Forecasting_August2025/actions/workflows/tests.yml/badge.svg)](https://github.com/ViswanathDas/Energy_Price_Forecasting_August2025/actions/workflows/tests.yml)
+
 Day-ahead electricity price forecasting for the Dutch (NL) market using machine learning.
 Built as a practical engineering portfolio project demonstrating time-series feature engineering,
 generation mix modelling, and systematic model evaluation.
@@ -98,6 +100,26 @@ this a harder forecasting problem than a typical winter period.
 The gradient boosted model ranks lag-24h and lag-168h (same hour last week) as the strongest
 features, followed by rolling mean and renewable generation lag. The renewable share feature
 appears in the top 10, confirming the merit-order signal is being used.
+
+## Limitations
+
+- The model forecasts each hour 24 hours ahead from the information available at that hour. The real day-ahead auction closes at noon on D-1 for all 24 hours of day D, so a production setup would forecast all hours of the next day from a single cut-off.
+- Generation mix features use the actual generation at forecast time, not the published generation forecasts that a trader would use for D+1.
+- MAPE is reported but not used to rank models, because prices near or below zero make it explode (373 percent for the naive model on this test set).
+- Single train/test split. A rolling-origin backtest would give a more robust comparison.
+
+## Tests
+
+```bash
+pip install pytest
+pytest tests/ -q
+```
+
+The tests check that the target is the price 24 hours ahead, that changing future prices does not change past features (no leakage), that the split is strictly temporal, and that the naive and linear results in the table above are reproduced.
+
+## Data
+
+Source: SMARD.de (Bundesnetzagentur), licensed CC BY 4.0. The monthly CSV files are included in `data/raw/smard/` so the pipeline runs out of the box.
 
 ## Earlier Run (ENTSO-E, 7 months)
 

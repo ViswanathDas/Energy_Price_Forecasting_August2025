@@ -6,7 +6,7 @@ __pycache__/
 data/raw/*.csv
 data/raw/*.parquet
 data/raw/*.xlsx
-data/processed/
+data/processed/plots/
 *.egg-info/
 dist/
 build/
